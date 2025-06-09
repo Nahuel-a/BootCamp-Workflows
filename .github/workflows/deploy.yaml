@@ -10,7 +10,7 @@ jobs:
       - name: Hola mundo
         run: echo "Hola mundo" #comando que se ejecutará en el job
 
-jobs:
+  # Puedes agregar más jobs aquí
   second_job: 
     runs-on: ubuntontu-latest #especifica el sistema operativo en el que se ejecutará el job
     
