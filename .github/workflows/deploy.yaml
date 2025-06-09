@@ -3,9 +3,17 @@ name: Deploy to server #nombre del workflow
 on: push #evento que dispara el workflow
 
 jobs:
-  first_jobs: 
+  first_job: 
     runs-on: ubuntontu-latest #especifica el sistema operativo en el que se ejecutará el job
     
     steps:
       - name: Hola mundo
         run: echo "Hola mundo" #comando que se ejecutará en el job
+
+jobs:
+  second_job: 
+    runs-on: ubuntontu-latest #especifica el sistema operativo en el que se ejecutará el job
+    
+    steps:
+      - name: Hola mundo
+        run: echo "Hola mundo 2" #comando que se ejecutará en el job
