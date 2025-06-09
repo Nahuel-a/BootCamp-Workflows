@@ -8,6 +8,4 @@ jobs:
     
     steps:
       -name: Hola mundo
-        run: echo "Hola mundo" #comando que se ejecutará en el job
-
-        
+        run echo "Hola mundo" #comando que se ejecutará en el job
