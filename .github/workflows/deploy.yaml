@@ -4,7 +4,7 @@ on: push #evento que dispara el workflow
 
 jobs:
   first_job: 
-    runs-on: ubuntontu-latest #especifica el sistema operativo en el que se ejecutará el job
+    runs-on: ubuntu-latest #especifica el sistema operativo en el que se ejecutará el job
     
     steps:
       - name: Hola mundo
