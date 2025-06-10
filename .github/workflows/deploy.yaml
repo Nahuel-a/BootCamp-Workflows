@@ -23,4 +23,18 @@ jobs:
 
     steps:
       - name: Hola mundo
-        run: echo "Hola mundo 2" 
+        run: echo "Hola mundo 2"
+  
+  third_job:
+    needs: second_job # indica que este job depende de second_job
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Working dir
+        run: ls -la
+
+      - name: Actions
+        uses: actions/checkout@v4 # De esta forma se clona un actions de GitHub
+
+      - name: Working dir after action
+        run: ls -la   
