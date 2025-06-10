@@ -4,21 +4,23 @@ on: push #evento que dispara el workflow
 
 jobs:
   first_job: 
-    runs-on: ubuntu-latest #especifica el sistema operativo en el que se ejecutará el job
+    runs-on: ubuntu-latest #especifica el sistema operativo 
     
+    env:
+      NAME: Variable de entorno
     steps:
       - name: Hola mundo
-        run: echo "Hola mundo" #comando que se ejecutará en el job
+        run: echo "Hola mundo $NAME" #comando que se ejecutará en el job ($NAME es la variable de entorno definida arriba)
 
-  # Puedes agregar más jobs aquí
+  # Puedes agregar más jobs(three_job, fourth_job, etc) 
   second_job: 
     needs: first_job # indica que este job depende de first_job, si hay mas jobs, se hace una lista 
     #ejemplo:
     # needs: 
     #   - first_job
     #   - third_job
-    runs-on: ubuntu-latest #especifica el sistema operativo en el que se ejecutará el job
-    
+    runs-on: ubuntu-latest #especifica el sistema operativo
+
     steps:
       - name: Hola mundo
-        run: echo "Hola mundo 2" #comando que se ejecutará en el job
+        run: echo "Hola mundo 2" 
