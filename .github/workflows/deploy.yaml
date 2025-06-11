@@ -48,7 +48,7 @@ jobs:
           echo "Archivo prueba, Hola" >> test.log
 
       - name: Subir artecato # Los artefactos se utilizan cuando se quiere obtener informacion de los jobs realizados
-      
         uses: actions/upload-artifact@v4
         with:
-          name: test.log
+          name: archivo-test
+          path: test.log #ruta del archivo que se va a subir como artefacto
