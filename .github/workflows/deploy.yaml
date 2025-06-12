@@ -8,3 +8,9 @@ jobs:
     steps:
       - name: Print variable
         run: echo "${{ secrets.TOKEN_SECRECT }}" #De esta forma se obtiene el secreto
+
+      - name: setup
+        uses: actions/setup-node@v4  # Configura el entorno de Node.js
+        with:
+          node-version: '18'
+          cache: 'npm'
