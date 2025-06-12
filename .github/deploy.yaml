@@ -1,0 +1,54 @@
+name: Deploy to server #nombre del workflow
+
+on: push #evento que dispara el workflow
+
+jobs:
+  first_job: 
+    runs-on: ubuntu-latest #especifica el sistema operativo 
+    
+    env:
+      NAME: Variable de entorno
+    steps:
+      - name: Hola mundo
+        run: echo "Hola mundo $NAME" #comando que se ejecutará en el job ($NAME es la variable de entorno definida arriba)
+
+  # Puedes agregar más jobs(three_job, fourth_job, etc) 
+  second_job: 
+    needs: first_job # indica que este job depende de first_job, si hay mas jobs, se hace una lista 
+    #ejemplo:
+    # needs: 
+    #   - first_job
+    #   - third_job
+    runs-on: ubuntu-latest #especifica el sistema operativo
+
+    steps:
+      - name: Hola mundo
+        run: echo "Hola mundo 2"
+  
+  third_job:
+    needs: second_job # indica que este job depende de second_job
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Working dir
+        run: ls -la
+
+      - name: Actions
+        uses: actions/checkout@v4 # De esta forma se clona un actions de GitHub
+
+      - name: Working dir after action
+        run: ls -la   
+
+  fourth_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generar archivo
+        run: |
+          echo "Archivo prueba, Hola" >> test.log
+
+      - name: Subir artecato # Los artefactos se utilizan cuando se quiere obtener informacion de los jobs realizados
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-test
+          path: test.log #ruta del archivo que se va a subir como artefacto
