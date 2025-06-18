@@ -27,3 +27,21 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+
+  second_job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2 #Clona el repositorio
+      
+      - name: setup
+        uses: actions/setup-node@v4  # Configura el entorno de Node.js
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install #Instala las dependencias del proyecto
+
+      - name: Run tests
+        run: npm test #Ejecuta los tests del proyecto
