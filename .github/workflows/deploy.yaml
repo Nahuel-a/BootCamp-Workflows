@@ -5,7 +5,20 @@ on: push
 jobs:
   first_job:
     runs-on: ubuntu-latest
-    steps:
+
+    services: # Define el service a utilizar 
+      redis:
+        image: redis 
+        ports:
+          - 6379:6379
+
+    steps: #Las steps se manejan con lenguaje de linux
+      - name: Install redis cli
+        run: sudo apt-get update -y && sudo apt-get install redis-tools -y #Instala el cliente de redis
+      
+      - name: Test redis
+        run: redis-cli -h localhost -p 6379 ping #Verifica que el cliente de redis este funcionando
+      
       - name: Print variable
         run: echo "${{ secrets.TOKEN_SECRECT }}" #De esta forma se obtiene el secreto
 
