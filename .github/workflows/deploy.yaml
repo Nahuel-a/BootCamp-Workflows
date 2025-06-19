@@ -46,7 +46,8 @@ jobs:
         run: npm run test #Ejecuta los tests del proyecto
 
       - name: Upload artifact
-        uses: actions/update-pages-artifact@v3
+        id: upload
+        uses: actions/upload-pages-artifact@v3
         with:
           path: public/
 
